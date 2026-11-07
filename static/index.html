@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Video Downloader</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">↓</span><span>Local Video Downloader</span></div>
+      <span class="local-badge"><span class="dot"></span> On this computer</span>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow">YOUR PERSONAL DOWNLOAD SPACE</div>
+      <h1>Videos, saved simply.</h1>
+      <p>Paste one video link or a whole list. Download up to five at once and find every file in your local folder.</p>
+    </section>
+
+    <section class="panel input-panel" aria-labelledby="add-heading">
+      <div class="section-head"><div><h2 id="add-heading">Add video links</h2><p>One URL per line · up to 100 links per batch</p></div><span class="step">01 / ADD</span></div>
+      <label class="sr-only" for="urls">Video URLs</label>
+      <textarea id="urls" spellcheck="false" placeholder="https://www.youtube.com/watch?v=...&#10;https://www.instagram.com/reel/...&#10;https://www.tiktok.com/@creator/video/..."></textarea>
+      <div class="settings-row">
+        <label>Quality <select id="quality"><option value="best">Best available</option><option value="1080">Up to 1080p</option><option value="720">Up to 720p</option><option value="480">Up to 480p</option></select></label>
+        <label>At once <select id="concurrency"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></label>
+        <div class="input-actions"><button id="add" class="button secondary">Add to queue</button><button id="start" class="button primary">Start downloads <span>→</span></button></div>
+      </div>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+      <div id="invalid" class="invalid" hidden></div>
+    </section>
+
+    <section class="summary-grid" aria-label="Download summary">
+      <div class="summary"><span>In queue</span><strong id="queued-count">0</strong></div>
+      <div class="summary"><span>Downloading</span><strong id="active-count">0</strong></div>
+      <div class="summary"><span>Completed</span><strong id="completed-count">0</strong></div>
+      <div class="summary"><span>Needs attention</span><strong id="failed-count">0</strong></div>
+    </section>
+
+    <section class="panel queue-panel" aria-labelledby="queue-heading">
+      <div class="section-head queue-head"><div><h2 id="queue-heading">Download queue</h2><p id="queue-subtitle">Your videos will appear here.</p></div><div class="queue-actions"><button id="open-folder" class="text-button">↗ Open download folder</button><button id="clear" class="text-button">Clear completed</button></div></div>
+      <div id="jobs" class="jobs"><div class="empty"><div class="empty-icon">↓</div><strong>Nothing in the queue yet</strong><span>Add a link above to get started.</span></div></div>
+    </section>
+    <footer>Files stay on this computer. Only public videos are supported. Respect creators and site rules.</footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
